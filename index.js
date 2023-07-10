@@ -9,6 +9,9 @@ const moviesRoute = require("./routes/movies");
 const listsRoute = require("./routes/lists");
 const port = process.env.PORT || 5000;
 
+app.use(express.json());
+app.use(cors());
+
 // Database connection
 mongoose
   .connect(process.env.DB_URL)
@@ -19,8 +22,7 @@ mongoose
     console.log(`DB connection Error: ${error}`);
   });
 
-app.use(express.json());
-app.use(cors());
+
 
 //   Define all the routes here
 app.use("/api/auth", authRoute);
